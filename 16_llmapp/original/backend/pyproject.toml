@@ -1,0 +1,64 @@
+[project]
+name = "code-reviewer-backend"
+version = "0.1.0"
+description = "Code Reviewer backend API"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "aiosqlite==0.22.1",
+    "alembic==1.18.4",
+    "fastapi==0.131.0",
+    "greenlet>=3.3.2",
+    "openai==2.21.0",
+    "passlib[bcrypt]==1.7.4",
+    "pydantic-settings>=2.7,<3.0",
+    "python-dotenv==1.2.1",
+    "python-jose[cryptography]==3.5.0",
+    "sqlalchemy==2.0.46",
+    "sse-starlette==3.2.0",
+    "uvicorn[standard]==0.41.0",
+]
+
+[dependency-groups]
+dev = [
+    "httpx==0.28.1",
+    "pytest==9.0.2",
+    "pytest-asyncio>=1.0,<2.0",
+    "ruff==0.15.2",
+]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 88
+
+[tool.ruff.lint]
+select = [
+    "E",     # pycodestyle errors
+    "W",     # pycodestyle warnings
+    "F",     # pyflakes
+    "I",     # isort
+    "N",     # pep8-naming
+    "UP",    # pyupgrade
+    "B",     # flake8-bugbear
+    "SIM",   # flake8-simplify
+    "T20",   # flake8-print
+    "ASYNC", # flake8-async
+]
+ignore = [
+    "E501", # line too long (handled by formatter)
+    "B008", # function call in default arg (FastAPI Depends pattern)
+]
+
+[tool.ruff.lint.isort]
+known-first-party = ["app"]
+
+[tool.ruff.lint.per-file-ignores]
+"alembic/versions/*.py" = ["UP007", "UP035"]
+
+[tool.ruff.format]
+quote-style = "double"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+filterwarnings = ["ignore::DeprecationWarning"]

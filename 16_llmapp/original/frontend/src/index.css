@@ -1,0 +1,88 @@
+@import "tailwindcss";
+
+@theme {
+  /* GitHub Dark (default) */
+  --color-od-base: #161b22;
+  --color-od-surface: #0d1117;
+  --color-od-float: #21262d;
+  --color-od-overlay: #30363d;
+  --color-od-border: #30363d;
+  --color-od-fg: #c9d1d9;
+  --color-od-fg-bright: #e6edf3;
+  --color-od-fg-muted: #8b949e;
+  --color-od-accent: #2f81f7;
+  --color-od-red: #f85149;
+  --color-od-green: #3fb950;
+  --color-od-yellow: #d29922;
+  --color-od-orange: #db6d28;
+  --color-od-purple: #bc8cff;
+  --color-od-cyan: #39d2c0;
+}
+
+[data-theme="light"] {
+  --color-od-base: #ffffff;
+  --color-od-surface: #f6f8fa;
+  --color-od-float: #eaeef2;
+  --color-od-overlay: #d0d7de;
+  --color-od-border: #d0d7de;
+  --color-od-fg: #24292f;
+  --color-od-fg-bright: #1f2328;
+  --color-od-fg-muted: #656d76;
+  --color-od-accent: #0969da;
+  --color-od-red: #cf222e;
+  --color-od-green: #1a7f37;
+  --color-od-yellow: #9a6700;
+  --color-od-orange: #bc4c00;
+  --color-od-purple: #8250df;
+  --color-od-cyan: #0969da;
+}
+
+body {
+  background-color: var(--color-od-surface);
+  color: var(--color-od-fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans",
+    Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+/* Monaco editor gutter markers for issue severity */
+.issue-glyph-error::before {
+  content: "";
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-od-red);
+  margin: auto;
+}
+
+.issue-glyph-warning::before {
+  content: "";
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-od-yellow);
+  margin: auto;
+}
+
+.issue-glyph-info::before {
+  content: "";
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-od-accent);
+  margin: auto;
+}
+
+.issue-line-highlight {
+  background: color-mix(in srgb, var(--color-od-accent) 20%, transparent);
+}
+
+.issue-line-error {
+  background: color-mix(in srgb, var(--color-od-red) 18%, transparent);
+}
+
+.issue-line-warning {
+  background: color-mix(in srgb, var(--color-od-yellow) 18%, transparent);
+}
